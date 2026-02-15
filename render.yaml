@@ -29,5 +29,5 @@ services:
 
 databases:
   - name: eleanor-db
-    plan: starter
+    plan: free
     databaseName: eleanor_cms
