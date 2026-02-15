@@ -26,7 +26,10 @@
       "allowedTypes": ["images"]
     },
     "tags": {
-      "type": "json"
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::tag.tag",
+      "inversedBy": "projects"
     },
     "date": {
       "type": "date",
