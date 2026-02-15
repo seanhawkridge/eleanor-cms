@@ -1,20 +1,16 @@
 'use strict';
 
 module.exports = {
-  /**
-   * An asynchronous register function that runs before
-   * your application is initialized.
-   *
-   * This gives you an opportunity to extend code.
-   */
   register(/*{ strapi }*/) {},
 
-  /**
-   * An asynchronous bootstrap function that runs before
-   * your application gets started.
-   *
-   * This gives you an opportunity to set up your data model,
-   * run jobs, or perform some special logic.
-   */
-  bootstrap(/*{ strapi }*/) {},
+  bootstrap({ strapi }) {
+    const deployHook = process.env.RENDER_DEPLOY_HOOK_URL;
+    if (!deployHook) return;
+
+    strapi.db.lifecycles.subscribe({
+      afterCreate() { fetch(deployHook, { method: 'POST' }).catch(() => {}); },
+      afterUpdate() { fetch(deployHook, { method: 'POST' }).catch(() => {}); },
+      afterDelete() { fetch(deployHook, { method: 'POST' }).catch(() => {}); },
+    });
+  },
 };
