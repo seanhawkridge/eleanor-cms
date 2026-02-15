@@ -26,6 +26,18 @@ services:
         generateValue: true
       - key: ENCRYPTION_KEY
         generateValue: true
+      - key: UPLOAD_PROVIDER
+        value: aws-s3
+      - key: AWS_ACCESS_KEY_ID
+        sync: false
+      - key: AWS_ACCESS_SECRET
+        sync: false
+      - key: AWS_REGION
+        sync: false
+      - key: AWS_BUCKET
+        sync: false
+      - key: AWS_S3_BASE_URL
+        sync: false
 
 databases:
   - name: eleanor-db
