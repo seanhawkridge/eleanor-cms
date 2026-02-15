@@ -5,6 +5,7 @@ module.exports = ({ env }) => ({
       ...(env('UPLOAD_PROVIDER') === 'aws-s3' && {
         providerOptions: {
           baseUrl: env('AWS_S3_BASE_URL'),
+          acl: null,
           s3Options: {
             credentials: {
               accessKeyId: env('AWS_ACCESS_KEY_ID'),
